@@ -16,9 +16,9 @@ public class JakiDzienTygodnia {
 			System.out.println(sdf.format(c.getTime()));
 			c.roll(Calendar.YEAR, 1);
 			System.out.println(sdf.format(c.getTime()));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+       		} catch (Exception e) {
+            		e.printStackTrace();
+        	}
 		
 	}
 }
