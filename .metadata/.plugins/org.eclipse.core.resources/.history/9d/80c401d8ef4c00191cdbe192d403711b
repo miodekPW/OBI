@@ -1,0 +1,17 @@
+package zadanie1;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+public class JakiDzienTygodnia {
+	Date dzien=new Date();
+	Locale polski=new Locale("pl");
+	SimpleDateFormat sdf= new SimpleDateFormat("EEEE, dd.MM.yyyy",polski);
+	Calendar c = new GregorianCalendar(2016,00,01);
+	
+	
+	public JakiDzienTygodnia(int dd, int mm, int yyyy) {
+		System.out.println(sdf.format(dzien.getTime()));
+		polski.
+	}
+}

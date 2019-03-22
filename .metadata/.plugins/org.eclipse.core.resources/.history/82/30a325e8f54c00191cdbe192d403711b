@@ -1,0 +1,30 @@
+package zadanie1;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+public class JakiDzienTygodnia {
+	Date dzien=new Date();
+	Locale polski=new Locale("pl");
+	SimpleDateFormat sdf1= new SimpleDateFormat("dd.MM.yyyy");
+	SimpleDateFormat sdf2= new SimpleDateFormat("EEEE, dd.MM.yyyy",polski);
+	Calendar c ;
+	
+	
+	public JakiDzienTygodnia(int dd, int mm, int yyyy) {
+		try {
+			String a=dd+"."+mm+"."+yyyy;
+			c= new GregorianCalendar(yyyy,mm-1,dd);
+			System.out.println(sdf2.format(c.getTime()));
+			c.roll(Calendar.YEAR, 1);
+			System.out.println(sdf2.format(c.getTime()));
+            dzien = sdf1.parse(a);
+            
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+		//System.out.println(sdf2.format(dzien));
+		//System.out.println(sdf2.format(c.getTime()));
+	}
+}
