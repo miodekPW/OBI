@@ -1,23 +1,51 @@
 package zadanie3;
 
+import java.util.ArrayList;
+
 public class Pasazer {
-	//pola
+	// pola
 	private String imie;
 	private String nazwisko;
 	private String nr_dokumentu;
-	private boolean wiza;
-	
-	public Pasazer(String imie,String nazwisko,String dokument,boolean wiza) {
-		this.imie=imie;
-		this.nazwisko=nazwisko;
-		this.nr_dokumentu=dokument;
-		this.wiza=wiza;
+	private ArrayList<Bilet> bilety = new ArrayList<Bilet>();
+	// private Bilet[] bilety;
+
+	public Pasazer(String imie, String nazwisko, String dokument) {
+		this.imie = imie;
+		this.nazwisko = nazwisko;
+		this.nr_dokumentu = dokument;
 	}
-	
-	public void setWiza(boolean wiza) {
-		this.wiza=wiza;
+
+	public void kupBilet(Lot lot, int klasa) {
+		if (lot.zarezerwuj(klasa, this)) {
+			bilety.add(new Bilet(this, lot, klasa));
+		}
 	}
-	public String wypisz() {
-		return imie+" "+nazwisko;
+
+	public void usunBilety(Lot lot) {
+		for (int i = 0; i < bilety.size(); i++) {
+			if (bilety.get(i).dajLot() == lot) {
+
+				bilety.remove(i);
+
+			}
+		}
+
 	}
+
+	public void wypiszLista() {
+		System.out.println("Imiê: " + imie + " " + "	Nazwisko: " + nazwisko + "	Nr Dokumentu: " + nr_dokumentu);
+	}
+
+	public void wypiszPojedynczego() {
+		this.wypiszLista();
+		if (!bilety.isEmpty()) {
+			for (Bilet zawartosc : bilety) {
+				zawartosc.wypiszBilet();
+			}
+			System.out.println();
+		}
+
+	}
+
 }
